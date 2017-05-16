@@ -12,6 +12,58 @@ class Multiset:
         """
         self._head = None
 
+    def traversal(self):
+        """
+        Traverse through the whole list printing its items along the way.
+        :return: None
+        """
+        curNode = self._head
+        while curNode is not None:
+            if hasattr(curNode, 'data'):
+                print(curNode.data)
+            else:
+                print(curNode)
+            curNode = curNode.next
+
+    def unorderedSearch(self, target):
+        """
+        Searches for the target.
+        :param target: item you want to find
+        :return: True if item is in the list, False if not 
+        :rtype: 
+        """
+        target = str(target)
+        curNode = self._head
+        while curNode is not None:
+            if curNode.item == target:
+                return True
+            curNode = curNode.next
+        return False
+
+    def remove_all(self):
+        """
+        Removes all items from the list.
+        :return: 
+        :rtype: 
+        """
+        self._head = None
+
+    def split_half(self, head):
+        counter, counter_2, counter_3 = 0, 0, 0
+        curNode = self._head
+        while curNode is not None:
+            counter += 1
+            curNode = curNode.next
+        half_1 = int(counter/2)
+        first_half = self._head
+        curNode = self._head
+        while curNode is not None:
+            counter_2 += 1
+            if counter_2 == half_1 + 1:
+                second_half = curNode
+            curNode = curNode.next
+        return first_half.item, second_half.item
+
     def empty(self):
         """
         Checks emptiness of Multiset.
